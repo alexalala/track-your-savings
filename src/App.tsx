@@ -5,11 +5,12 @@ import Routes from './Routes';
 import Header from './components/Header';
 
 function App() {
+    console.log(process.env.REACT_APP_AUTH_DOMAIN)
     return (
         <div className="App">
             <Auth0Provider
-                domain={process.env.AUTH_DOMAIN || ''}
-                clientId={process.env.AUTH_CLIENTID || ''}
+                domain={process.env.REACT_APP_AUTH_DOMAIN || ''}
+                clientId={process.env.REACT_APP_AUTH_CLIENTID || ''}
                 redirectUri={window.location.origin}
             >
                 <Header />
