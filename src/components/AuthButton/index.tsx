@@ -5,7 +5,7 @@ interface TodoItemProps {
     signup?: boolean,
 }
 
-const AuthButton = ({signup}: TodoItemProps) => {
+const AuthButton = ({ signup }: TodoItemProps) => {
     const { isAuthenticated } = useAuth0();
 
     const LoginButton = () => {

@@ -5,6 +5,8 @@ import {
     Route
 } from "react-router-dom";
 
+import ProtectedRoute from './components/ProtectedRoute';
+import Home from './pages/Home';
 import Landing from './pages/Landing';
 
 export default function Routes() {
@@ -12,7 +14,8 @@ export default function Routes() {
         <Router>
             <div>
             <Switch>
-                <Route path="/">
+                <ProtectedRoute path="/" component={Home} />
+                <Route path="/home">
                     <Landing />
                 </Route>
             </Switch>
