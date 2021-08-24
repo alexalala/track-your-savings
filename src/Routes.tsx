@@ -14,8 +14,8 @@ export default function Routes() {
         <Router>
             <div>
             <Switch>
-                <ProtectedRoute path="/" component={Home} />
-                <Route path="/home">
+                <ProtectedRoute path="/home" component={Home} />
+                <Route path="/">
                     <Landing />
                 </Route>
             </Switch>

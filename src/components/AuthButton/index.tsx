@@ -40,7 +40,7 @@ const AuthButton = ({ signup }: TodoItemProps) => {
         );
     };
     
-    if (signup) {
+    if (signup && !isAuthenticated) {
         return <SignupButton />;
     };
 

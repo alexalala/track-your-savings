@@ -4,20 +4,17 @@ import './App.css';
 import Routes from './Routes';
 import Header from './components/Header';
 
-function App() {
-    console.log(process.env.REACT_APP_AUTH_DOMAIN)
-    return (
-        <div className="App">
-            <Auth0Provider
-                domain={process.env.REACT_APP_AUTH_DOMAIN || ''}
-                clientId={process.env.REACT_APP_AUTH_CLIENTID || ''}
-                redirectUri={'/home'}
-            >
-                <Header />
-                <Routes />
-            </Auth0Provider>
-        </div>
-    );
-}
+const App = () => (
+    <div className="App">
+        <Auth0Provider
+            domain={process.env.REACT_APP_AUTH_DOMAIN || ''}
+            clientId={process.env.REACT_APP_AUTH_CLIENTID || ''}
+            redirectUri={window.location.origin + '/home'}
+        >
+            <Header />
+            <Routes />
+        </Auth0Provider>
+    </div>
+);
 
 export default App;
