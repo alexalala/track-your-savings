@@ -77,11 +77,11 @@ function Edit(): JSX.Element {
         )}
         <form id={"create-account-form"} onSubmit={handleFormSubmission} noValidate={true}>
           <div>
-            <label htmlFor="title"> Title </label>
+            <label htmlFor="title">Title</label>
             <input type="text" id="title" defaultValue={account.title} onChange={(e) => handleInputChanges(e)} name="title" placeholder="Enter title" />
           </div>
           <div>
-            <label htmlFor="description"> Description </label>
+            <label htmlFor="description">Description</label>
             <input type="text" id="description" defaultValue={account.description} onChange={(e) => handleInputChanges(e)} name="description" placeholder="Enter Description" />
           </div>
           <div>

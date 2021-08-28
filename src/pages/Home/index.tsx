@@ -36,6 +36,7 @@ const Home = () => {
     }, [])
       return (
         <div>
+            <Link to={'/create'}>+ Add a new account</Link>
             {accounts && accounts.map((account: { title: React.ReactNode; _id: any; }) => (
             <div key={account._id}>
                 <div>
@@ -43,10 +44,7 @@ const Home = () => {
                 </div>
                 <ul>
                     <li>
-                        <Link to={`/account/${account._id}`}>View account </Link>
-                    </li>
-                    <li>
-                        <Link to={`/edit/${account._id}`}>Edit account </Link>
+                        <Link to={`/edit/${account._id}`}>Edit account</Link>
                     </li>
                     <li>
                         <button onClick={() => deleteAccount(account._id)}>Delete account</button>
