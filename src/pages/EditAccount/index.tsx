@@ -70,11 +70,6 @@ function Edit(): JSX.Element {
     {account &&
       <div>
         <h1>Edit Account</h1>
-        {submitSuccess && (
-          <div role="alert">
-            The account has been edited successfully!
-          </div>
-        )}
         <form id={"create-account-form"} onSubmit={handleFormSubmission} noValidate={true}>
           <div>
             <label htmlFor="title">Title</label>
@@ -97,6 +92,11 @@ function Edit(): JSX.Element {
             }
           </div>
         </form>
+        {submitSuccess && (
+          <div role="alert">
+            The account has been edited successfully!
+          </div>
+        )}
       </div>
     }
   </div>

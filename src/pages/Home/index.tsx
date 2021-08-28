@@ -37,9 +37,7 @@ const Home = () => {
             <Link to={'/create'}>+ Add a new account</Link>
             {accounts && accounts.map((account: { title: string; _id: string; amount: string}) => (
             <div key={account._id}>
-                <div>
-                    <h4>{account.title}</h4>
-                </div>
+                <h4>{account.title}</h4>
                 <ul>
                     <li>${account.amount}</li>
                     <li>
