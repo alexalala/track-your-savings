@@ -42,9 +42,11 @@ const AuthButton = ({ signup }: TodoItemProps) => {
     
     if (signup && !isAuthenticated) {
         return <SignupButton />;
+    } else if (!signup) {
+        return isAuthenticated ? <LogoutButton /> : <LoginButton />;
+    } else {
+        return <></>;
     };
-
-    return isAuthenticated ? <LogoutButton /> : <LoginButton />;
   };
   
   export default AuthButton;

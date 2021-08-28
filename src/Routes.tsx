@@ -16,7 +16,7 @@ export default function Routes() {
         <Router>
             <Switch>
                 <ProtectedRoute path="/home" component={Home} />
-                <ProtectedRoute path={"/edit/:postId"} component={Edit}/>
+                <ProtectedRoute path={"/edit/:accountId"} component={Edit}/>
                 <ProtectedRoute path={"/create"} component={Create} />
                 <Route path="/">
                     <Landing />
