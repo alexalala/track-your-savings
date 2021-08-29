@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
+import { Account } from '../../types';
 import AccountCard from '../../components/AccountCard';
 
 const Home = () => {
@@ -13,17 +14,20 @@ const Home = () => {
             setAccounts(json)
         }
         fetchAccounts();
-    }, [])
+    }, []);
+
       return (
         <div>
             <h1>Savings Dashboard</h1>
             <Link to={'/create'}>+ Add a new account</Link>
-            {accounts && accounts.map((account: { title: string; _id: string; amount: string}) => (
+            {accounts && accounts.map((account: Account) => (
             <div key={account._id}>
                 <AccountCard 
                     _id={account._id}
                     title={account.title}
                     amount={account.amount}
+                    month={account.month}
+                    year={account.year}
                 />
             </div>
             ))}

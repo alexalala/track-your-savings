@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { useAuth0 } from "@auth0/auth0-react";
+
+import { Account } from '../../types';
     
 function Edit(): JSX.Element {
   interface IValues {
@@ -9,16 +11,10 @@ function Edit(): JSX.Element {
   
   interface paramTypes { accountId: string; };
 
-  interface accountTypes { 
-    title: string;
-    description: string;
-    amount: string;
-  };
-
   const { getIdTokenClaims } = useAuth0();
   let history = useHistory();
   let { accountId } = useParams<paramTypes>();
-  const [account, setAccount] = useState({} as accountTypes);
+  const [account, setAccount] = useState({} as Account);
   const [values, setValues] = useState<IValues>([]);
   const [submitSuccess, setSubmitSuccess] = useState<boolean>(false);
   const [loading, setLoading] = useState(false);
@@ -76,12 +72,16 @@ function Edit(): JSX.Element {
             <input type="text" id="title" defaultValue={account.title} onChange={(e) => handleInputChanges(e)} name="title" placeholder="Enter title" />
           </div>
           <div>
-            <label htmlFor="description">Description</label>
-            <input type="text" id="description" defaultValue={account.description} onChange={(e) => handleInputChanges(e)} name="description" placeholder="Enter Description" />
-          </div>
-          <div>
             <label htmlFor="body">Amount</label>
             <input type="text" id="body" defaultValue={account.amount} onChange={(e) => handleInputChanges(e)} name="amount" placeholder="Enter amount" />
+          </div>
+          <div>
+            <label htmlFor="month">Month</label>
+            <input type="text" id="month" defaultValue={account.month} onChange={(e) => handleInputChanges(e)} name="month" placeholder="Enter Month" />
+          </div>
+          <div>
+            <label htmlFor="year">Year</label>
+            <input type="number" id="year" defaultValue={account.year} onChange={(e) => handleInputChanges(e)} name="year" placeholder="Enter Year" />
           </div>
           <div>
             <button type="submit">

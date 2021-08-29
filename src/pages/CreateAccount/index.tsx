@@ -20,6 +20,8 @@ function Create(): JSX.Element {
       title: values.title,
       description: values.description,
       amount: values.amount,
+      month: values.month,
+      year: values.year,
     }
     const submitSuccess: boolean = await submitform(formData);
     setSubmitSuccess(submitSuccess);
@@ -65,16 +67,20 @@ function Create(): JSX.Element {
       )}
       <form id={"create-account-form"} onSubmit={handleFormSubmission} noValidate={true}>
         <div>
-          <label htmlFor="title"> Title </label>
+          <label htmlFor="title">Title</label>
           <input type="text" id="title" onChange={(e) => handleInputChanges(e)} name="title" placeholder="Enter title" />
         </div>
         <div>
-          <label htmlFor="description"> Description </label>
-          <input type="text" id="description" onChange={(e) => handleInputChanges(e)} name="description" placeholder="Enter Description" />
+          <label htmlFor="amount">Amount</label>
+          <input type="number" id="amount" onChange={(e) => handleInputChanges(e)} name="amount" placeholder="Enter amount" />
         </div>
         <div>
-          <label htmlFor="body"> Amount</label>
-          <input type="text" id="body" onChange={(e) => handleInputChanges(e)} name="amount" placeholder="Enter amount" />
+          <label htmlFor="month">Month</label>
+          <input type="text" id="month" onChange={(e) => handleInputChanges(e)} name="month" placeholder="Enter Month" />
+        </div>
+        <div>
+          <label htmlFor="year">Year</label>
+          <input type="number" id="year" onChange={(e) => handleInputChanges(e)} name="year" placeholder="Enter Year" />
         </div>
         <div>
           <button type="submit">

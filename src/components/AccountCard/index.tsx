@@ -5,7 +5,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { Account } from '../../types';
 import { StyledAccountCardContainer, StyledActions } from './styles';
 
-const AccountCard = ({title, _id, amount}: Account) => {
+const AccountCard = ({title, _id, amount, month, year}: Account) => {
     const { getIdTokenClaims } = useAuth0();
     let history = useHistory();
     const deleteAccount = async(id: string) => {
@@ -25,6 +25,7 @@ const AccountCard = ({title, _id, amount}: Account) => {
         <StyledAccountCardContainer>
             <h3>{title}</h3>
             <p>${amount}</p>
+            <p>{month} {year}</p>
             <StyledActions>
                 <Link to={`/edit/${_id}`}>Edit</Link>
                 <button onClick={() => deleteAccount(_id)}>x</button>
