@@ -11,6 +11,7 @@ const AccountsGrid = () => {
     interface populatedColTypes {
         date?: string;
         accounts?: Account[];
+        total?: number;
     };
 
     type populatedColArray = populatedColTypes[];
@@ -46,7 +47,7 @@ const AccountsGrid = () => {
 
     // Populate columns with accounts.
     useEffect(() => {
-        let newArray = columns.map((column) => ({ date: column, accounts: [] as Account[]}));
+        let newArray = columns.map((column) => ({ date: column, accounts: [] as Account[], total: 0 }));
         
         accounts.forEach((account: Account) => {
             let accountDate = account.month + ' ' + account.year;
@@ -54,13 +55,12 @@ const AccountsGrid = () => {
             newArray.forEach((column) => {
                 if (accountDate === column.date) {
                     column.accounts.push(account);
+                    column.total = column.total + (account.amount || 0);
                 }
             })
         })
         setPopulatedColumns(newArray as populatedColArray);
     }, [columns, accounts]);
-
-    // Calculate totals within columns.
 
 
     return (
@@ -68,18 +68,19 @@ const AccountsGrid = () => {
             { populatedColumns.length && populatedColumns.map((column: populatedColTypes, i: number) => (
                 <StyledColumn key={i}>
                     <h3>{column.date}</h3>
-                        {column.accounts?.length && column.accounts.map((account: Account) => (
-                            <div key={account._id}>
-                                <AccountCard 
-                                    _id={account._id}
-                                    title={account.title}
-                                    amount={account.amount}
-                                    month={account.month}
-                                    year={account.year}
-                                />
-                            </div>
-                        ))}
                     <Link to={`/create/${column?.date?.replace(/\s/g, '-').toLowerCase()}`}>+ Add a new account</Link>
+                    {column.accounts?.length && column.accounts.map((account: Account) => (
+                        <div key={account._id}>
+                            <AccountCard 
+                                _id={account._id}
+                                title={account.title}
+                                amount={account.amount}
+                                month={account.month}
+                                year={account.year}
+                            />
+                        </div>
+                    ))}
+                    <h4>Monthly total: {column.total}</h4>
                 </StyledColumn>
             ))}
         </StyledAccountsGridContainer>

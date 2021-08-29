@@ -4,7 +4,7 @@ export const StyledAccountCardContainer = styled.div`
     border: 1px solid #ececec;
     margin: 1rem;
     max-width: 10rem;
-    padding: 1.5rem;
+    padding: 2.25rem 2.5rem 0.75rem;
     box-shadow: 6px 6px 16px -8px rgba(0,0,0,0.35);
     position: relative;
 `;
@@ -15,9 +15,11 @@ export const StyledActions = styled.div`
 
     a {
         color: black;
-       text-transform: uppercase;
+        text-transform: uppercase;
         font-size: 0.8rem;
-        margin-bottom: 1rem;
+        position: absolute;
+        top: 1.25rem;
+        left: 1.25rem;
     }
 
     button {

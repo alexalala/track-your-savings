@@ -25,7 +25,6 @@ const AccountCard = ({title, _id, amount, month, year}: Account) => {
         <StyledAccountCardContainer>
             <h3>{title}</h3>
             <p>${amount}</p>
-            <p>{month} {year}</p>
             <StyledActions>
                 <Link to={`/edit/${_id}`}>Edit</Link>
                 <button onClick={() => deleteAccount(_id)}>x</button>
