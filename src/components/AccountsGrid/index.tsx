@@ -80,7 +80,7 @@ const AccountsGrid = () => {
                             />
                         </div>
                     ))}
-                    <h4>Monthly total: {column.total}</h4>
+                    <h4>Monthly total: ${column.total}</h4>
                 </StyledColumn>
             ))}
         </StyledAccountsGridContainer>

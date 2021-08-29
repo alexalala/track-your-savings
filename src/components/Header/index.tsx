@@ -1,14 +1,14 @@
 import React from "react";
 import AuthButton from '../AuthButton';
 
-import { StyledHeaderContainer, StyledButtonContainer } from './styles';
+import { StyledHeaderContainer, StyledButtonContainer, StyledTitle } from './styles';
 
 const Header = () => (
     <StyledHeaderContainer>
-        <p>Track Your Savings</p>
+        <StyledTitle>Track Your Savings</StyledTitle>
         <StyledButtonContainer>
-            <AuthButton signup={true} />
             <AuthButton />
+            <AuthButton signup={true} />
         </StyledButtonContainer>
     </StyledHeaderContainer>
 );
