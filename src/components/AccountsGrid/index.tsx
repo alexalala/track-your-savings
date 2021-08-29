@@ -79,7 +79,7 @@ const AccountsGrid = () => {
                                 />
                             </div>
                         ))}
-                    <Link to={'/create'}>+ Add a new account</Link>
+                    <Link to={`/create/${column?.date?.replace(/\s/g, '-').toLowerCase()}`}>+ Add a new account</Link>
                 </StyledColumn>
             ))}
         </StyledAccountsGridContainer>

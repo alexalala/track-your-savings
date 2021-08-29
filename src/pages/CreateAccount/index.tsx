@@ -1,29 +1,53 @@
-import React, { useState } from 'react';
-import { withRouter, useHistory } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
 import { useAuth0 } from "@auth0/auth0-react";
+
+import { Account } from '../../types';
     
-function Create(): JSX.Element {
+const Create = (): JSX.Element => {
+  interface ParamsTypes {
+    date: string;
+  };
+
+  interface ValuesTypes {
+    [key: string]: any;
+  };
+
   let history = useHistory();
   const { getIdTokenClaims, user } = useAuth0();
+  let { date } = useParams<ParamsTypes>();
 
-  interface IValues {
-    [key: string]: any;
-  }
-  const [values, setValues] = useState<IValues>([]);
+  const [values, setValues] = useState<ValuesTypes>({});
   const [submitSuccess, setSubmitSuccess] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
-    
+
+  // Convert URL params to date.
+  useEffect(() => {
+    var array = date.split('-');
+    console.log(array);
+
+    if (array.length === 2) {
+        setValues({
+            ...values,
+            month: array[0].toUpperCase(),
+            year: parseInt(array[1], 10)
+        })
+    }
+    // eslint-disable-next-line
+}, [date]);
+  
   const handleFormSubmission = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
     setLoading(true);
-    const formData = {
+
+    const formData: Account = {
       title: values.title,
-      description: values.description,
       amount: values.amount,
       month: values.month,
       year: values.year,
       user: user?.sub,
-    }
+    };
+
     const submitSuccess: boolean = await submitform(formData);
     setSubmitSuccess(submitSuccess);
     setValues({...values, formData});
@@ -50,7 +74,7 @@ function Create(): JSX.Element {
       return false;
     }
   }
-  const setFormValues = (formValues: IValues) => {
+  const setFormValues = (formValues: Account) => {
     setValues({...values, ...formValues})
   }
   const handleInputChanges = (e: React.FormEvent<HTMLInputElement>) => {
@@ -76,14 +100,6 @@ function Create(): JSX.Element {
           <input type="number" id="amount" onChange={(e) => handleInputChanges(e)} name="amount" placeholder="Enter amount" />
         </div>
         <div>
-          <label htmlFor="month">Month</label>
-          <input type="text" id="month" onChange={(e) => handleInputChanges(e)} name="month" placeholder="Enter Month" />
-        </div>
-        <div>
-          <label htmlFor="year">Year</label>
-          <input type="number" id="year" onChange={(e) => handleInputChanges(e)} name="year" placeholder="Enter Year" />
-        </div>
-        <div>
           <button type="submit">
             Create Account
           </button>
@@ -95,4 +111,4 @@ function Create(): JSX.Element {
     </div>
   );
 }
-export default withRouter(Create)
+export default Create;

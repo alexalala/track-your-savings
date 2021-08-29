@@ -8,7 +8,7 @@ import { StyledAccountCardContainer, StyledActions } from './styles';
 const AccountCard = ({title, _id, amount, month, year}: Account) => {
     const { getIdTokenClaims } = useAuth0();
     let history = useHistory();
-    const deleteAccount = async(id: string) => {
+    const deleteAccount = async(id: string | undefined) => {
         const accessToken = await getIdTokenClaims();
         await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/savings/delete?accountID=${id}`, {
             method: "delete",

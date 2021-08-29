@@ -19,7 +19,7 @@ export default function Routes() {
         <Router>
             <Switch>
                 <ProtectedRoute path={"/edit/:accountId"} component={Edit}/>
-                <ProtectedRoute path={"/create"} component={Create} />
+                <ProtectedRoute path={"/create/:date"} component={Create} />
                 { isAuthenticated ?
                     <ProtectedRoute path="/" component={Home} />
                 :
