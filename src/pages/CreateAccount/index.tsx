@@ -4,8 +4,8 @@ import { useAuth0 } from "@auth0/auth0-react";
     
 function Create(): JSX.Element {
   let history = useHistory();
-  const { getIdTokenClaims } = useAuth0();
-    
+  const { getIdTokenClaims, user } = useAuth0();
+
   interface IValues {
     [key: string]: any;
   }
@@ -22,6 +22,7 @@ function Create(): JSX.Element {
       amount: values.amount,
       month: values.month,
       year: values.year,
+      user: user?.sub,
     }
     const submitSuccess: boolean = await submitform(formData);
     setSubmitSuccess(submitSuccess);
