@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import AccountCard from '../../components/AccountCard';
 import { Account } from '../../types';
 
-import { StyledAccountsGridContainer, StyledColumn } from './styles';
+import { StyledAccountsGridContainer, StyledColumn, StyledAddContainer } from './styles';
 
 const AccountsGrid = () => {
     interface populatedColTypes {
@@ -51,7 +51,7 @@ const AccountsGrid = () => {
         
         accounts.forEach((account: Account) => {
             let accountDate = account.month + ' ' + account.year;
-
+            
             newArray.forEach((column) => {
                 if (accountDate === column.date) {
                     column.accounts.push(account);
@@ -59,6 +59,15 @@ const AccountsGrid = () => {
                 }
             })
         })
+        
+        // Add current month if not already logged.
+        var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];;
+        var date = new Date();
+        const currentMonth = months[date.getMonth()].toUpperCase() + ' ' + date.getFullYear();
+
+        if (!columns.includes(currentMonth)) {
+            newArray.push({date: currentMonth, accounts: [] as Account[], total: 0  })
+        }
         setPopulatedColumns(newArray as populatedColArray);
     }, [columns, accounts]);
 
@@ -68,9 +77,20 @@ const AccountsGrid = () => {
             { populatedColumns.length && populatedColumns.map((column: populatedColTypes, i: number) => (
                 <StyledColumn key={i}>
                     <h3>{column.date}</h3>
-                    <h4><span>Monthly total:</span> ${column.total}</h4>
-                    <Link to={`/create/${column?.date?.replace(/\s/g, '-').toLowerCase()}`}>+ Add Account</Link>
-                    {column.accounts?.length && column.accounts.map((account: Account) => (
+                    {column?.accounts?.length !== 0 ? (
+                        <>
+                            <h4><span>Monthly total:</span> ${column.total}</h4>
+                            <Link to={`/create/${column?.date?.replace(/\s/g, '-').toLowerCase()}`}>+ Add Account</Link>
+                        </>
+                    ) : (
+                        <StyledAddContainer>
+                            <Link to={`/create/${column?.date?.replace(/\s/g, '-').toLowerCase()}`}>
+                                <span>+</span>
+                                <p>Add Account</p>
+                            </Link>
+                        </StyledAddContainer>
+                    )}
+                    {column?.accounts?.map((account: Account) => (
                         <div key={account._id}>
                             <AccountCard 
                                 _id={account._id}
