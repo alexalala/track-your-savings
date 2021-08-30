@@ -42,12 +42,11 @@ const Graph = ({months, values}: graphProps) => {
 
     const options = {
         animations: {
-            tension: {
-            duration: 10000,
-            easing: 'easeInSine',
-            from: 1,
-            to: 0,
-            loop: true
+            radius: {
+                duration: 10000,
+                easing: 'easeInSine',
+                from: 1,
+                to: 0,
             }
         },
     }
