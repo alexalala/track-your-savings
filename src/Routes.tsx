@@ -9,8 +9,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 import ProtectedRoute from './components/ProtectedRoute';
 import Home from './pages/Home';
 import Landing from './pages/Landing';
-import Edit from './pages/EditAccount';
-import Create from './pages/CreateAccount';
+import Edit from './pages/Account/Edit';
+import Create from './pages/Account/Create';
 
 export default function Routes() {
     const { isAuthenticated } = useAuth0();

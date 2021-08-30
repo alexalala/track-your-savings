@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { useAuth0 } from "@auth0/auth0-react";
+import { Link } from 'react-router-dom';
 
 import { Account } from '../../types';
-import { StyledFormField, StyledForm, StyledMoneyInput } from './styles';
+import { StyledFormField, StyledForm, StyledMoneyInput, StyledButtonContainer } from './styles';
     
 const Create = (): JSX.Element => {
     interface ParamsTypes {
@@ -99,7 +100,8 @@ const Create = (): JSX.Element => {
                         <input type="number" step="0.01" id="amount" onChange={(e) => handleInputChanges(e)} name="amount" placeholder="0.00" />
                     </StyledMoneyInput>
                 </StyledFormField>
-                <div>
+                <StyledButtonContainer>
+                    <Link to="/">Back</Link>
                     <button type="submit">
                         Create Account
                     </button>
@@ -109,7 +111,7 @@ const Create = (): JSX.Element => {
                     {submitSuccess && (
                         <p>Account Created</p>
                     )}
-                </div>
+                </StyledButtonContainer>
             </StyledForm>
         </div>
     );

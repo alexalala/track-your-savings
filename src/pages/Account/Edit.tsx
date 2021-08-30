@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { useAuth0 } from "@auth0/auth0-react";
+import { Link } from 'react-router-dom';
 
 import { Account } from '../../types';
+import { StyledFormField, StyledForm, StyledButtonContainer } from './styles';
     
 function Edit(): JSX.Element {
   interface IValues {
@@ -66,32 +68,25 @@ function Edit(): JSX.Element {
     {account &&
       <div>
         <h1>Edit Account</h1>
-        <form id={"create-account-form"} onSubmit={handleFormSubmission} noValidate={true}>
-          <div>
+        <StyledForm id={"create-account-form"} onSubmit={handleFormSubmission} noValidate={true}>
+          <StyledFormField>
             <label htmlFor="title">Title</label>
             <input type="text" id="title" defaultValue={account.title} onChange={(e) => handleInputChanges(e)} name="title" placeholder="Enter title" />
-          </div>
-          <div>
+          </StyledFormField>
+          <StyledFormField>
             <label htmlFor="body">Amount</label>
             <input type="text" id="body" defaultValue={account.amount} onChange={(e) => handleInputChanges(e)} name="amount" placeholder="Enter amount" />
-          </div>
-          <div>
-            <label htmlFor="month">Month</label>
-            <input type="text" id="month" defaultValue={account.month} onChange={(e) => handleInputChanges(e)} name="month" placeholder="Enter Month" />
-          </div>
-          <div>
-            <label htmlFor="year">Year</label>
-            <input type="number" id="year" defaultValue={account.year} onChange={(e) => handleInputChanges(e)} name="year" placeholder="Enter Year" />
-          </div>
-          <div>
+          </StyledFormField>
+          <StyledButtonContainer>
+            <Link to="/">Back</Link>
             <button type="submit">
               Edit Account
             </button>
             {loading &&
               <p>Loading...</p>
             }
-          </div>
-        </form>
+          </StyledButtonContainer>
+        </StyledForm>
         {submitSuccess && (
           <div role="alert">
             The account has been edited successfully!

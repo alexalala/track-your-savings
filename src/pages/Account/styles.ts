@@ -48,3 +48,19 @@ export const StyledMoneyInput = styled.div`
         margin: 1rem;
     }
 `;
+
+export const StyledButtonContainer = styled.div`
+    display: flex;
+
+    a {
+        background: none;
+        border: 1px solid black;
+        color: black;
+        text-decoration: none;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+        margin: 1rem;
+        cursor: pointer;
+    }
+`;
