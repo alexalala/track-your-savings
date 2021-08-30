@@ -16,6 +16,7 @@ export const StyledColumn = styled.div`
     background: #e7f4fa;
     border-radius: 1rem;
     min-width: 13rem;
+    min-height: 70vh;
 
     span {
         font-weight: 500;
