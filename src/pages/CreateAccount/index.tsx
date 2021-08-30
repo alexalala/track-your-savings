@@ -3,6 +3,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import { useAuth0 } from "@auth0/auth0-react";
 
 import { Account } from '../../types';
+import { StyledFormField, StyledForm, StyledMoneyInput } from './styles';
     
 const Create = (): JSX.Element => {
     interface ParamsTypes {
@@ -24,7 +25,6 @@ const Create = (): JSX.Element => {
     // Convert URL params to date.
     useEffect(() => {
         var array = date.split('-');
-        console.log(array);
 
         if (array.length === 2) {
             setValues({
@@ -83,22 +83,22 @@ const Create = (): JSX.Element => {
     }
     return (
         <div>
-            <h2> Create Account</h2>
+            <h1>Add Account</h1>
             {!submitSuccess && (
                 <p>Ensure all fields are filled in to submit</p>
             )}
-            {submitSuccess && (
-                <p>Account Created</p>
-            )}
-            <form id={"create-account-form"} onSubmit={handleFormSubmission} noValidate={true}>
-                <div>
-                    <label htmlFor="title">Title</label>
-                    <input type="text" id="title" onChange={(e) => handleInputChanges(e)} name="title" placeholder="Enter title" />
-                </div>
-                <div>
-                    <label htmlFor="amount">Amount</label>
-                    <input type="number" id="amount" onChange={(e) => handleInputChanges(e)} name="amount" placeholder="Enter amount" />
-                </div>
+            <StyledForm id={"create-account-form"} onSubmit={handleFormSubmission} noValidate={true}>
+                <StyledFormField>
+                    <label htmlFor="title">Account Name</label>
+                    <input type="text" id="title" onChange={(e) => handleInputChanges(e)} name="title" placeholder="Bank of America" />
+                </StyledFormField>
+                <StyledFormField>
+                    <label htmlFor="amount">Account Amount</label>
+                    <StyledMoneyInput>
+                        <span>$</span>
+                        <input type="number" step="0.01" id="amount" onChange={(e) => handleInputChanges(e)} name="amount" placeholder="0.00" />
+                    </StyledMoneyInput>
+                </StyledFormField>
                 <div>
                     <button type="submit">
                         Create Account
@@ -106,8 +106,11 @@ const Create = (): JSX.Element => {
                     {loading &&
                         <p>Loading...</p>
                     }
+                    {submitSuccess && (
+                        <p>Account Created</p>
+                    )}
                 </div>
-            </form>
+            </StyledForm>
         </div>
     );
 }
