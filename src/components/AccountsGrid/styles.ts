@@ -4,7 +4,10 @@ export const StyledAccountsGridContainer = styled.div`
     display: flex;
     margin-top: 2rem;
     width: 100vw;
-    overflow: scroll;
+
+    @media only screen and (max-width: 600px) {
+        overflow: scroll;
+    }
 `;
 
 export const StyledColumn = styled.div`

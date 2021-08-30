@@ -10,7 +10,7 @@ export const StyledBackgroundContainer = styled.div`
 
 export const StyledDescriptionContainer = styled.div`
     position: absolute;
-    top: 25vh;
+    top: 20vh;
     display: flex;
     align-items: center;
     width: 100%;
