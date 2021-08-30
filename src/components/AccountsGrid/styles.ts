@@ -2,9 +2,33 @@ import styled from 'styled-components';
 
 export const StyledAccountsGridContainer = styled.div`
     display: flex;
+    margin-top: 2rem;
 `;
 
 export const StyledColumn = styled.div`
     display: flex;
     flex-direction: column;
+    margin: 0.5rem 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    background: #e7f4fa;
+    border-radius: 1rem;
+
+    span {
+        font-weight: 500;
+    }
+
+    h3 {
+        margin: 0.5rem 0 0 0;
+        color: #6092ae;
+    }
+
+    > a {
+        color: black;
+        text-decoration: none;
+        background: #ffffffc4;
+        border-radius: 0.25rem;
+        padding: 0.25rem;
+        margin: 0 0.5rem 0.55rem;
+    }
 `;

@@ -68,7 +68,8 @@ const AccountsGrid = () => {
             { populatedColumns.length && populatedColumns.map((column: populatedColTypes, i: number) => (
                 <StyledColumn key={i}>
                     <h3>{column.date}</h3>
-                    <Link to={`/create/${column?.date?.replace(/\s/g, '-').toLowerCase()}`}>+ Add a new account</Link>
+                    <h4><span>Monthly total:</span> ${column.total}</h4>
+                    <Link to={`/create/${column?.date?.replace(/\s/g, '-').toLowerCase()}`}>+ Add Account</Link>
                     {column.accounts?.length && column.accounts.map((account: Account) => (
                         <div key={account._id}>
                             <AccountCard 
@@ -80,7 +81,6 @@ const AccountsGrid = () => {
                             />
                         </div>
                     ))}
-                    <h4>Monthly total: ${column.total}</h4>
                 </StyledColumn>
             ))}
         </StyledAccountsGridContainer>

@@ -5,7 +5,7 @@ import { StyledHeaderContainer, StyledButtonContainer, StyledTitle } from './sty
 
 const Header = () => (
     <StyledHeaderContainer>
-        <StyledTitle>Track Your Savings</StyledTitle>
+        <StyledTitle>Track My Savings</StyledTitle>
         <StyledButtonContainer>
             <AuthButton />
             <AuthButton signup={true} />
