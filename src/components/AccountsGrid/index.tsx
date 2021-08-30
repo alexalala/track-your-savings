@@ -75,14 +75,14 @@ const AccountsGrid = () => {
 
     return (
         <StyledAccountsGridContainer>
-            <Graph months={columns} values={populatedColumns} />
+            { columns.length !== 0 && <Graph months={columns} values={populatedColumns} /> }
             <StyledGrid>
                 { populatedColumns.length && populatedColumns.map((column: populatedColTypes, i: number) => (
                     <StyledColumn key={i}>
                         <h3>{column.date}</h3>
                         {column?.accounts?.length !== 0 ? (
                             <>
-                                <h4><span>Monthly total:</span> ${column.total}</h4>
+                                <h4><span>Monthly total:</span> ${column.total?.toFixed(2)}</h4>
                                 <Link to={`/create/${column?.date?.replace(/\s/g, '-').toLowerCase()}`}>+ Add Account</Link>
                             </>
                         ) : (

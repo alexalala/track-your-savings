@@ -31,17 +31,29 @@ const Graph = ({months, values}: graphProps) => {
         labels: months,
         datasets: [
             {
-                label: 'Total',
+                label: 'Monthly Totals',
                 data: totals,
                 fill: false,
-                backgroundColor: '#6092ae',
-                borderColor: '#6092ae',
+                backgroundColor: '#56ae96',
+                borderColor: '#56ae96',
             },
         ],
     };
 
+    const options = {
+        animations: {
+            tension: {
+            duration: 10000,
+            easing: 'easeInSine',
+            from: 1,
+            to: 0,
+            loop: true
+            }
+        },
+    }
+
     return (
-        <Line data={data} />
+        <Line data={data} options={options} />
     )
 };
 
