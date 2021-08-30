@@ -3,9 +3,10 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from 'react-router-dom';
 
 import AccountCard from '../../components/AccountCard';
+import Graph from '../../components/Graph';
 import { Account } from '../../types';
 
-import { StyledAccountsGridContainer, StyledColumn, StyledAddContainer } from './styles';
+import { StyledAccountsGridContainer, StyledGrid, StyledColumn, StyledAddContainer } from './styles';
 
 const AccountsGrid = () => {
     interface populatedColTypes {
@@ -74,35 +75,38 @@ const AccountsGrid = () => {
 
     return (
         <StyledAccountsGridContainer>
-            { populatedColumns.length && populatedColumns.map((column: populatedColTypes, i: number) => (
-                <StyledColumn key={i}>
-                    <h3>{column.date}</h3>
-                    {column?.accounts?.length !== 0 ? (
-                        <>
-                            <h4><span>Monthly total:</span> ${column.total}</h4>
-                            <Link to={`/create/${column?.date?.replace(/\s/g, '-').toLowerCase()}`}>+ Add Account</Link>
-                        </>
-                    ) : (
-                        <StyledAddContainer>
-                            <Link to={`/create/${column?.date?.replace(/\s/g, '-').toLowerCase()}`}>
-                                <span>+</span>
-                                <p>Add Account</p>
-                            </Link>
-                        </StyledAddContainer>
-                    )}
-                    {column?.accounts?.map((account: Account) => (
-                        <div key={account._id}>
-                            <AccountCard 
-                                _id={account._id}
-                                title={account.title}
-                                amount={account.amount}
-                                month={account.month}
-                                year={account.year}
-                            />
-                        </div>
-                    ))}
-                </StyledColumn>
-            ))}
+            <Graph months={columns} values={populatedColumns} />
+            <StyledGrid>
+                { populatedColumns.length && populatedColumns.map((column: populatedColTypes, i: number) => (
+                    <StyledColumn key={i}>
+                        <h3>{column.date}</h3>
+                        {column?.accounts?.length !== 0 ? (
+                            <>
+                                <h4><span>Monthly total:</span> ${column.total}</h4>
+                                <Link to={`/create/${column?.date?.replace(/\s/g, '-').toLowerCase()}`}>+ Add Account</Link>
+                            </>
+                        ) : (
+                            <StyledAddContainer>
+                                <Link to={`/create/${column?.date?.replace(/\s/g, '-').toLowerCase()}`}>
+                                    <span>+</span>
+                                    <p>Add Account</p>
+                                </Link>
+                            </StyledAddContainer>
+                        )}
+                        {column?.accounts?.map((account: Account) => (
+                            <div key={account._id}>
+                                <AccountCard 
+                                    _id={account._id}
+                                    title={account.title}
+                                    amount={account.amount}
+                                    month={account.month}
+                                    year={account.year}
+                                />
+                            </div>
+                        ))}
+                    </StyledColumn>
+                ))}
+            </StyledGrid>
         </StyledAccountsGridContainer>
     );
 };

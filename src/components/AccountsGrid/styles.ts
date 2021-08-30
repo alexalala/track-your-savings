@@ -2,8 +2,24 @@ import styled from 'styled-components';
 
 export const StyledAccountsGridContainer = styled.div`
     display: flex;
-    margin-top: 2rem;
+    flex-direction: column;
     width: 100vw;
+    align-items: center;
+
+    canvas {
+        max-width: 30rem;
+        max-height: 15rem;
+        margin: 2rem;
+
+        @media only screen and (max-width: 600px) {
+            margin: 0.5rem;
+        }
+    }
+`;
+
+export const StyledGrid = styled.div`
+    display: flex;
+    width: 100%;
 
     @media only screen and (max-width: 600px) {
         overflow: scroll;
