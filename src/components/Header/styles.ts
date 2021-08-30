@@ -11,6 +11,11 @@ export const StyledTitle = styled.p`
     font-size: 1.75rem;
     margin: 0;
     color: #98ceea;
+
+    @media only screen and (max-width: 600px) {
+        font-size: 1.25rem;
+        margin: 0.325rem;
+    }
 `;
 
 export const StyledButtonContainer = styled.div`

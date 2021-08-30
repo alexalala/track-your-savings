@@ -3,6 +3,8 @@ import styled from 'styled-components';
 export const StyledAccountsGridContainer = styled.div`
     display: flex;
     margin-top: 2rem;
+    width: 100vw;
+    overflow: scroll;
 `;
 
 export const StyledColumn = styled.div`
@@ -37,7 +39,7 @@ export const StyledColumn = styled.div`
 export const StyledAddContainer = styled.div`
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: calc(100% - 6rem);
     justify-content: center;
 
     a {

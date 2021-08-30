@@ -10,14 +10,25 @@ export const StyledBackgroundContainer = styled.div`
 
 export const StyledDescriptionContainer = styled.div`
     position: absolute;
-    top: 20vh;
+    top: 25vh;
     display: flex;
     align-items: center;
     width: 100%;
+
+    @media only screen and (max-width: 600px) {
+        flex-direction: column-reverse;
+        top: 15vh;
+    }
 `;
 
 export const StyledStacks = styled.img`
     width: 50%;
+    margin-bottom: 2rem;
+
+    @media only screen and (max-width: 600px) {
+        width: 100%;
+        margin-bottom: 0;
+    }
 `;
 
 export const StyledTextContainer = styled.div`
@@ -30,6 +41,7 @@ export const StyledTextContainer = styled.div`
         text-transform: uppercase;
         font-size: 3.5rem;
         text-align: left;
+        margin: 0;
     }
 
     p {
@@ -38,5 +50,19 @@ export const StyledTextContainer = styled.div`
 
     button {
         width: fit-content;
+    }
+
+    @media only screen and (max-width: 600px) {
+        padding: 0;
+        width: 100%;
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 1rem;
+        }
+
+        p, button {
+            margin: 1rem;
+        }
     }
 `;

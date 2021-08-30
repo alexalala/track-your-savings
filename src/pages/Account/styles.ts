@@ -6,6 +6,7 @@ export const StyledForm = styled.form`
     max-width: 40rem;
     align-items: center;
     margin: 3rem auto;
+    padding: 1rem;
 
     button {
         background: none;
@@ -45,7 +46,7 @@ export const StyledMoneyInput = styled.div`
     align-items: center;
 
     span {
-        margin: 1rem;
+        margin-right: 1rem;
     }
 `;
 
